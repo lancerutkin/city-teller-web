@@ -16,11 +16,7 @@ const defaultCorsHeaders = {
 
 app.use('/address', (req, res, next) => {
   res.set(defaultCorsHeaders);
-  if (req.method === 'OPTIONS') {
-    res.sendStatus(200);
-  } else {
-    next();
-  }
+  next();
 });
 
 app.use(express.static(path.join(__dirname, '../dist')));
