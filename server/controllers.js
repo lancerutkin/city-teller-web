@@ -1,4 +1,4 @@
-const { googleMapsKey } = process.env.GOOGLE_MAPS_KEY || require('../config');
+const googleMapsKey = process.env.GOOGLE_MAPS_KEY || require('../config').googleMapsKey;
 const googleMapsClient = require('@google/maps').createClient({
   key: googleMapsKey
 });
