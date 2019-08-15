@@ -31,11 +31,19 @@ module.exports = {
     lng: ${lng}
     latRange: ${latRange}
     lngRange: ${lngRange}`)
-    readProximateMerchants(lat, lng, latRange, lngRange).then((results) => {
-      res.send(results);
-    }).catch(err => {
-      console.error(err)
-      res.sendStatus(500);
-    })
+    lat = parseInt(lat);
+    lng = parseInt(lng);
+    latRange = parseInt(latRange);
+    lngRange = parseInt(lngRange);
+    if (isNaN(lat) || isNaN(lng) || isNaN(latRange) || isNaN(lngRange)) {
+      res.sendStatus(400);
+    } else {
+      readProximateMerchants(lat, lng, latRange, lngRange).then((results) => {
+        res.send(results);
+      }).catch(err => {
+        console.error(err)
+        res.sendStatus(500);
+      })
+    }
   }
 }
