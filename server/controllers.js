@@ -35,7 +35,6 @@ module.exports = {
       res.sendStatus(400);
     } else {
       readProximateMerchants(lat, lng, latRange, lngRange).then((results) => {
-        console.log(results);
         res.send(results);
       }).catch(err => {
         console.error(err)
