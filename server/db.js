@@ -35,6 +35,7 @@ module.exports = {
     return Merchant.create(vendor)
   },
   readProximateMerchants: (lat, lng, latRange, lngRange) => {
+    console.log(`latLow: ${lat - latRange}, latHigh: ${lat + latRange}, lngLow: ${lng - lngRange}, lngHigh: ${lng + lngRange}`)
     return Merchant.find({"lat": {$gte: lat - latRange, $lte: lat + latRange}, 
     "lng": {$lte: lng - lngRange, $gte: lng + lngRange}});
   }
