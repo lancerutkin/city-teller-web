@@ -2,7 +2,7 @@ const googleMapsKey = process.env.GOOGLE_MAPS_KEY || require('../config').google
 const googleMapsClient = require('@google/maps').createClient({
   key: googleMapsKey
 });
-const { createMerchant, readProximateAddresses } = require('./db');
+const { createMerchant, readProximateMerchants } = require('./db');
 
 module.exports = {
   postNewMerchant: (req, res) => {
@@ -27,7 +27,7 @@ module.exports = {
   },
   getProximateAddresses: (req, res) => {
     let {lat, lng, latRange, lngRange } = req.query;
-    readProximateAddresses(lat, lng, latRange, lngRange).then((results) => {
+    readProximateMerchants(lat, lng, latRange, lngRange).then((results) => {
       res.send(results);
     }).catch(err => {
       res.sendStatus(500);
