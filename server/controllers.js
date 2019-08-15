@@ -27,6 +27,10 @@ module.exports = {
   },
   getProximateAddresses: (req, res) => {
     let {lat, lng, latRange, lngRange } = req.query;
+    console.log(`lat: ${lat}
+    lng: ${lng}
+    latRange: ${latRange}
+    lngRange: ${lngRange}`)
     readProximateMerchants(lat, lng, latRange, lngRange).then((results) => {
       res.send(results);
     }).catch(err => {
