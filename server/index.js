@@ -15,7 +15,7 @@ const defaultCorsHeaders = {
 };
 
 app.use('/address', (req, res, next) => {
-  res.setHeaders(defaultCorsHeaders);
+  res.set(defaultCorsHeaders);
   if (req.method === 'OPTIONS') {
     res.sendStatus(200);
   } else {
