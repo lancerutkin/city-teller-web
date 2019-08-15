@@ -83,7 +83,6 @@ const Signup = ({display}) => {
 
   return (
     <Fade in={display === 'signup'}>
-      <Paper elevation={4} className={classes.paper}>
         <form className={classes.container} autoComplete="off" id="address-form">
           <TextField
             required
@@ -185,7 +184,6 @@ const Signup = ({display}) => {
           />
           <Button variant="contained" color="primary" className={classes.button} onClick={postInformation}>Submit</Button>
         </form>
-      </Paper>
     </Fade>
   );
 };
