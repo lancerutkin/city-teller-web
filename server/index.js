@@ -6,7 +6,22 @@ const routes = require('./routes');
 const cors = require('cors');
 
 app.use(bodyParser.json());
-app.use(cors());
+
+const defaultCorsHeaders = {
+  'Access-Control-Allow-Origin': '*',
+  'access-control-allow-methods': 'GET, OPTIONS',
+  'access-control-allow-headers': 'content-type, accept',
+  'access-control-max-age': 10
+};
+
+app.use('/address', (req, res, next) => {
+  res.setHeader(defaultCorsHeaders);
+  if (req.method === 'OPTIONS') {
+    res.sendStatus(200);
+  } else {
+    next();
+  }
+});
 
 app.use(express.static(path.join(__dirname, '../dist')));
 
