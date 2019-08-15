@@ -27,10 +27,10 @@ module.exports = {
   },
   getProximateAddresses: (req, res) => {
     let {lat, lng, latRange, lngRange } = req.query;
-    lat = parseInt(lat);
-    lng = parseInt(lng);
-    latRange = parseInt(latRange);
-    lngRange = parseInt(lngRange);
+    lat = parseFloat(lat);
+    lng = parseFloat(lng);
+    latRange = parseFloat(latRange);
+    lngRange = parseFloat(lngRange);
     if (isNaN(lat) || isNaN(lng) || isNaN(latRange) || isNaN(lngRange)) {
       res.sendStatus(400);
     } else {
