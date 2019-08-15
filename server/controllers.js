@@ -27,10 +27,6 @@ module.exports = {
   },
   getProximateAddresses: (req, res) => {
     let {lat, lng, latRange, lngRange } = req.query;
-    console.log(`lat: ${lat}
-    lng: ${lng}
-    latRange: ${latRange}
-    lngRange: ${lngRange}`)
     lat = parseInt(lat);
     lng = parseInt(lng);
     latRange = parseInt(latRange);
