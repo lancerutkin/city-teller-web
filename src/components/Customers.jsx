@@ -29,7 +29,7 @@ const Customers = () => {
       <div>
         <Container maxWidth="md" className={classes.section}>
           <Typography className={classes.text} variant="h2">
-            Get customers into your store.
+            Let customers know you offer cash back.
           </Typography>
         </Container>
         <Container maxWidth="md" className={classes.section}>
