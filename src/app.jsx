@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
 import ReactDOM from 'react-dom';
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles, withStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import Home from './components/Home';
 import Signup from './components/Signup';
+import { purple } from '@material-ui/core/colors';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -14,9 +15,27 @@ const useStyles = makeStyles(theme => ({
   },
   title: {
     flexGrow: 1,
-    cursor: "pointer"
+    cursor: "pointer",
+    fontFamily: 'Montserrat'
   },
+  appBar: {
+    backgroundColor: '#5EB963',
+  }
 }));
+
+const SignupButton = withStyles(theme => ({
+  root: {
+    borderRadius: 20,
+    boxShadow: 10,
+    fontFamily: 'Montserrat',
+    color: '#1F487E',
+    backgroundColor: 'white',
+    '&:hover': {
+      backgroundColor: '#eeeeee',
+    },
+  },
+}))(Button);
+
 
 const App = () => {
   const classes = useStyles();
@@ -41,16 +60,15 @@ const App = () => {
 
   return (
     <div className={classes.root}>
-      <AppBar position="static">
+      <AppBar position="static" className={classes.appBar}>
         <Toolbar>
           <Typography variant="h6" className={classes.title} onClick={goToHome}>
             CityTeller
           </Typography>
-          <Button color="inherit" onClick={goToSignup}>Signup</Button>
+          <SignupButton onClick={goToSignup}>Signup</SignupButton>
         </Toolbar>
       </AppBar>
-      <Home display={display} />
-      <Signup display={display} />
+      {display === 'home' ? <Home display={display} goToSignup={goToSignup}/> : <Signup display={display} />}
     </div>
   );
 }
