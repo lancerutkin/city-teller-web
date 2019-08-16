@@ -87,7 +87,10 @@ const Signup = ({display}) => {
         setSuccess(true);
         setTimeout(() => setSuccess(false), 1500);
         reset();
-      }).catch(() => setFailure(true));
+      }).catch(() => {
+        setFailure(true)
+        setSpinner(false)
+      });
     } else {
       setInvalid(true);
     }
